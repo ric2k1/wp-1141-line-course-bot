@@ -30,6 +30,7 @@ async function handleLineWebhook(req: NextRequest): Promise<Response> {
 
   try {
     console.log('收到 LINE webhook 事件');
+    console.log(body.events[0]);
     await requestHandler(body, {
       method: req.method ?? 'POST',
       path: req.nextUrl.pathname,
