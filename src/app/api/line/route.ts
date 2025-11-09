@@ -29,6 +29,7 @@ async function handleLineWebhook(req: NextRequest): Promise<Response> {
   });
 
   try {
+    console.log('收到 LINE webhook 事件');
     await requestHandler(body, {
       method: req.method ?? 'POST',
       path: req.nextUrl.pathname,
@@ -39,6 +40,7 @@ async function handleLineWebhook(req: NextRequest): Promise<Response> {
       params: {},
       url: req.url,
     });
+    console.log('處理 LINE webhook 事件完成');
   } catch (error) {
     console.error('處理 LINE webhook 事件時發生錯誤', error);
     return new Response('Internal Server Error', { status: 500 });
